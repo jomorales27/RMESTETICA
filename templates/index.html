@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeautyClinic — Historia Clínica</title>
+<title>RM ESTETICA — Historia Clínica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -139,13 +139,99 @@ tbody tr:hover td{background:var(--bg2)}
   #print-area { position:fixed;top:0;left:0;width:100%;padding:30px;font-family:'DM Sans',sans-serif; }
   .no-print { display:none !important; }
 }
+
+/* ── RESPONSIVE MOBILE ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  body { flex-direction: column; height: 100dvh; overflow: hidden; }
+
+  /* Sidebar se convierte en barra inferior */
+  .sidebar {
+    width: 100%; height: auto; flex-direction: column;
+    border-right: none; border-top: 1px solid var(--border);
+    order: 2; flex-shrink: 0;
+  }
+  .logo { display: none; }
+  .nav {
+    flex-direction: row; padding: 6px 8px; gap: 2px;
+    overflow-x: auto; overflow-y: hidden;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-lbl, .nav-divider { display: none; }
+  .nav-item {
+    flex-direction: column; gap: 3px; padding: 6px 10px;
+    font-size: 10px; min-width: 60px; justify-content: center;
+    text-align: center; border-radius: var(--radius); white-space: nowrap;
+  }
+  .nav-item svg { width: 20px; height: 20px; }
+
+  /* Main ocupa todo el espacio */
+  .main { flex: 1; order: 1; overflow: hidden; min-height: 0; }
+
+  /* Topbar más compacta */
+  .topbar { padding: 10px 14px; }
+  .topbar-date { display: none; }
+  .page-title { font-size: 16px; }
+  .btn { padding: 6px 10px; font-size: 12px; }
+  #btn-primary span { display: none; }
+
+  /* Contenido */
+  .content { padding: 14px; }
+
+  /* Grids a 1 columna */
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .grid-2 { grid-template-columns: 1fr; gap: 12px; }
+  .grid-3 { grid-template-columns: 1fr; }
+
+  /* Cards */
+  .card { padding: 14px; }
+
+  /* Tablas: scroll horizontal */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { font-size: 12px; min-width: 500px; }
+  th, td { padding: 7px 8px; }
+
+  /* Métricas */
+  .metric { padding: 12px 14px; }
+  .metric-value { font-size: 20px; }
+
+  /* Modales full screen en mobile */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal { width: 100% !important; max-width: 100% !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-height: 92dvh; padding: 20px 16px; }
+  .modal-lg { width: 100% !important; }
+
+  /* Formularios 1 columna */
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: span 1; }
+
+  /* Presupuesto items */
+  .presup-item-row { grid-template-columns: 1fr 60px 90px 80px 30px; gap: 4px; }
+
+  /* Fotos */
+  .foto-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Agenda */
+  .cal-day { font-size: 11px; padding: 5px 2px; min-height: 28px; }
+  .cal-head { font-size: 9px; }
+
+  /* Ficha paciente */
+  #sec-ficha .grid-2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px) {
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .nav-item { min-width: 52px; padding: 6px 6px; font-size: 9px; }
+  .foto-grid { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="logo">
-    <div class="logo-title">BeautyClinic</div>
+    <div class="logo-title">RM ESTETICA</div>
     <div class="logo-sub">Historia Clínica</div>
   </div>
   <div class="nav">
@@ -991,7 +1077,7 @@ async function imprimirPresupuesto(id) {
     <div style="max-width:680px;margin:0 auto;font-family:'DM Sans',sans-serif">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid #8B4513">
         <div>
-          <div style="font-family:'DM Serif Display',serif;font-size:26px;color:#8B4513">BeautyClinic</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:26px;color:#8B4513">RM ESTETICA</div>
           <div style="font-size:12px;color:#9E8E7E;letter-spacing:.5px;text-transform:uppercase">Historia Clínica · Estética</div>
         </div>
         <div style="text-align:right">
